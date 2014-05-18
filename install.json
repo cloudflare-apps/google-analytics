@@ -18,7 +18,7 @@
         "description": "Get this from Google Analytics (for example, UA-12345678-1)",
         "type": "string"
       },
-      "size": {
+      "domain": {
         "title": "Universal analytics domain",
         "description": "Get this from Google Analytics (for example, eager.io)",
         "type": "string"
