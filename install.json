@@ -1,0 +1,28 @@
+{
+  "resources": {
+    "body": [
+      {
+        "type": "script",
+        "src": "./eager-google-analytics.js"
+      },
+      {
+        "type": "script",
+        "contents": "EagerGoogleAnalytics.init(OPTIONS)"
+      }
+    ]
+  },
+  "options": {
+    "properties": {
+      "id": {
+        "title": "Universal analytics ID",
+        "description": "Get this from Google Analytics (for example, UA-12345678-1)",
+        "type": "string"
+      },
+      "size": {
+        "title": "Universal analytics domain",
+        "description": "Get this from Google Analytics (for example, eager.io)",
+        "type": "string"
+      }
+    }
+  }
+}
