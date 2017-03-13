@@ -1,7 +1,4 @@
-## Eager Google Analytics
-> Add Google Analytics using Eager
+## Cloudflare Apps Google Analytics
+>Add Google Analytics using Cloudflare
 
-### Eager app store
-Visit [Eager app store](https://eager.io/app/3sa_P_ftYXnj)
-
-__[Demo](http://eager.io/example-site)__
+Try it for free at [Cloudflare Apps](https://cloudflare.com/apps/google-analytics)

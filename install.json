@@ -3,11 +3,7 @@
     "body": [
       {
         "type": "script",
-        "src": "./eager-google-analytics.js"
-      },
-      {
-        "type": "script",
-        "contents": "EagerGoogleAnalytics.init(INSTALL_OPTIONS)"
+        "src": "./cf-google-analytics.js"
       }
     ]
   },
@@ -15,13 +11,15 @@
     "properties": {
       "id": {
         "title": "Universal analytics ID",
-        "description": "Get this from Google Analytics (for example, UA-12345678-1)",
-        "type": "string"
+        "placeholder": "UA-12345678-1",
+        "type": "string",
+        "order": 0
       },
       "domain": {
         "title": "Universal analytics domain",
-        "description": "Get this from Google Analytics (for example, eager.io)",
-        "type": "string"
+        "placeholder": "example.com",
+        "type": "string",
+        "order": 1
       }
     }
   }
