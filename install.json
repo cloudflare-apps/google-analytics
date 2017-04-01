@@ -1,25 +1,50 @@
 {
   "resources": {
-    "body": [
+    "head": [
       {
         "type": "script",
-        "src": "./cf-google-analytics.js"
+        "src": "./source/google-analytics.js"
+      },
+      {
+        "type": "script",
+        "src": "./source/app.js"
       }
     ]
   },
+  "hooks": [
+    {
+      "endpoint": "https://cfgoogleanalytics.fwd.wf",
+      "events": ["option-change:account", "preview"],
+      "block": true,
+      "authenticate": ["account"]
+    }
+  ],
   "options": {
     "properties": {
+      "account": {
+        "title": "Google Analytics Account",
+        "type": "object",
+        "format": "account",
+        "services": ["googleanalytics"],
+        "order": 0
+      },
       "id": {
         "title": "Universal analytics ID",
         "placeholder": "UA-12345678-1",
         "type": "string",
-        "order": 0
+        "order": 1
+      },
+      "showDomain": {
+        "title": "Enable cross-domain analytics",
+        "type": "boolean",
+        "order": 2
       },
       "domain": {
+        "showIf": "showDomain",
         "title": "Universal analytics domain",
         "placeholder": "example.com",
         "type": "string",
-        "order": 1
+        "order": 3
       }
     }
   }
