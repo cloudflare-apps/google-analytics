@@ -3,7 +3,7 @@
 
 _Looking for the [Google Analytics OAuth service](https://github.com/CloudflareApps/GoogleAnalyticsOAuthService)?_
 
-<a href="https://https://www.cloudflare.com/apps/google-analytics/install?source=button">
+<a href="https://www.cloudflare.com/apps/google-analytics/install?source=button">
   <img
     src="https://install.eager.io/install-button.png"
     alt="Install Google Analytics with Cloudflare Apps"
