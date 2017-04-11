@@ -13,7 +13,7 @@
   },
   "hooks": [
     {
-      "endpoint": "https://cfgoogleanalytics.fwd.wf",
+      "endpoint": "https://google-analytics-oauth.appstore.cfdata.org",
       "events": ["option-change:account", "preview"],
       "block": true,
       "authenticate": ["account"]
