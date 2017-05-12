@@ -14,7 +14,7 @@
   "hooks": [
     {
       "endpoint": "https://google-analytics-oauth.appstore.cfdata.org",
-      "events": ["option-change:account", "preview"],
+      "events": ["option-change:account"],
       "block": true,
       "authenticate": ["account"]
     }
