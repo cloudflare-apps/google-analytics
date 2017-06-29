@@ -19,6 +19,9 @@
       "authenticate": ["account"]
     }
   ],
+  "preview": {
+    "hide": true
+  },
   "options": {
     "properties": {
       "account": {
