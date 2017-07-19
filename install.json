@@ -48,6 +48,13 @@
         "placeholder": "example.com",
         "type": "string",
         "order": 3
+      },
+      "social": {
+        "title": "Track social",
+        "description": "Send events when users use any Facebook or Twitter widgets on your site",
+        "type": "boolean",
+        "default": false,
+        "order": 4
       }
     }
   }
