@@ -4,6 +4,6 @@
 
   if (!options.id) return
 
-  window.ga('create', options.id, domain)
-  window.ga('send', 'pageview')
+  window.ga('create', options.id, domain, 'cfapp')
+  window.ga('cfapp.send', 'pageview')
 }())
