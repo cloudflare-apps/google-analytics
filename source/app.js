@@ -3,10 +3,61 @@
 
   if (!options.id) return
 
+  function queue (callback) {
+    if ('addEventListener' in window) {
+      window.addEventListener('load', callback, false)
+    } else {
+      window.attachEvent('onload', callback)
+    }
+  }
+
+  function resolveParameter (uri, parameter) {
+    if (uri) {
+      var parameters = uri.split('#')[0].match(/[^?=&]+=([^&]*)?/g)
+
+      for (var i = 0, chunk; chunk = parameters[i]; ++i) {
+        if (chunk.indexOf(parameter) === 0) {
+          return unescape(chunk.split('=')[1])
+        }
+      }
+    }
+  }
+
   window.ga('create', options.id, 'auto')
   window.ga('send', 'pageview')
 
-  if (options.social){
-    (function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
+  if (options.social) {
+    queue(function () {
+      var FB = window.FB
+      var twttr = window.twttr
+
+      if ('FB' in window && 'Event' in FB && 'subscribe' in window.FB.Event) {
+        FB.Event.subscribe('edge.create', function (targetUrl) {
+          window.ga('send', 'social', 'facebook', 'like', {page: targetUrl})
+        })
+
+        FB.Event.subscribe('edge.remove', function (targetUrl) {
+          window.ga('send', 'social', 'facebook', 'unlike', {page: targetUrl})
+        })
+
+        FB.Event.subscribe('message.send', function (targetUrl) {
+          window.ga('send', 'social', 'facebook', 'send', {page: targetUrl})
+        })
+      }
+
+      if ('twttr' in window && 'events' in twttr && 'bind' in twttr.events) {
+        twttr.events.bind('tweet', function (event) {
+          if (event) {
+            var targetUrl
+
+            if (event.target && event.target.nodeName === 'IFRAME') {
+              targetUrl = resolveParameter(event.target.src, 'url')
+            }
+
+            window.ga('send', 'social', 'twitter', 'tweet', {page: targetUrl})
+          }
+        })
+      }
+    })
   }
 }())
