@@ -24,6 +24,7 @@
   }
 
   window.ga('create', options.id, 'auto')
+  window.ga('set', 'forceSSL', true)
   window.ga('send', 'pageview')
 
   if (options.social) {
