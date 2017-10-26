@@ -1,15 +1,8 @@
 (function () {
   var options = INSTALL_OPTIONS
+  var id = (options.id || '').trim()
 
-  if (!options.id) return
-
-  function queue (callback) {
-    if ('addEventListener' in window) {
-      window.addEventListener('load', callback, false)
-    } else {
-      window.attachEvent('onload', callback)
-    }
-  }
+  if (!id) return
 
   function resolveParameter (uri, parameter) {
     if (uri) {
@@ -23,26 +16,44 @@
     }
   }
 
-  window.ga('create', options.id, 'auto')
-  window.ga('set', 'forceSSL', true)
-  window.ga('send', 'pageview')
+  window.dataLayer = window.dataLayer || []
+  function gtag () { window.dataLayer.push(arguments) }
+
+  gtag('js', new Date())
+  gtag('config', id)
+
+  var vendorScript = document.createElement('script')
+  vendorScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + id
+  document.head.appendChild(vendorScript)
 
   if (options.social) {
-    queue(function () {
+    window.addEventListener('load', function googleAnalyticsSocialTracking () {
       var FB = window.FB
       var twttr = window.twttr
 
       if ('FB' in window && 'Event' in FB && 'subscribe' in window.FB.Event) {
         FB.Event.subscribe('edge.create', function (targetUrl) {
-          window.ga('send', 'social', 'facebook', 'like', {page: targetUrl})
+          gtag('event', 'share', {
+            method: 'facebook',
+            event_action: 'like',
+            content_id: targetUrl
+          })
         })
 
         FB.Event.subscribe('edge.remove', function (targetUrl) {
-          window.ga('send', 'social', 'facebook', 'unlike', {page: targetUrl})
+          gtag('event', 'share', {
+            method: 'facebook',
+            event_action: 'unlike',
+            content_id: targetUrl
+          })
         })
 
         FB.Event.subscribe('message.send', function (targetUrl) {
-          window.ga('send', 'social', 'facebook', 'send', {page: targetUrl})
+          gtag('event', 'share', {
+            method: 'facebook',
+            event_action: 'send',
+            content_id: targetUrl
+          })
         })
       }
 
@@ -55,10 +66,14 @@
               targetUrl = resolveParameter(event.target.src, 'url')
             }
 
-            window.ga('send', 'social', 'twitter', 'tweet', {page: targetUrl})
+            gtag('event', 'share', {
+              method: 'twitter',
+              event_action: 'tweet',
+              content_id: targetUrl
+            })
           }
         })
       }
-    })
+    }, false)
   }
 }())

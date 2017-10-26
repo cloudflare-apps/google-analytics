@@ -3,10 +3,6 @@
     "head": [
       {
         "type": "script",
-        "src": "./source/google-analytics.js"
-      },
-      {
-        "type": "script",
         "src": "./source/app.js"
       }
     ]
