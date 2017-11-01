@@ -1,8 +1,18 @@
 (function () {
   var options = INSTALL_OPTIONS
-  var id = (options.id || '').trim()
+  var id
 
-  if (!id) return
+
+  if (options.account) {
+    id = options['web-properties-for-' + options.organization]
+  } else {
+    id = (options.id || '').trim()
+  }
+
+  if (!id) {
+    console.log('Cloudflare Google Analytics: Disabled. UA-ID not present.')
+    return
+  }
 
   function resolveParameter (uri, parameter) {
     if (uri) {

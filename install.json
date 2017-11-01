@@ -9,8 +9,20 @@
   },
   "hooks": [
     {
-      "endpoint": "https://google-analytics-oauth.appstore.cfdata.org",
+      "endpoint": "https://teffen.fwd.wf",
       "events": ["option-change:account"],
+      "block": true,
+      "authenticate": ["account"]
+    },
+    {
+      "endpoint": "https://teffen.fwd.wf/provision",
+      "events": ["item-add"],
+      "block": true,
+      "authenticate": ["account"]
+    },
+    {
+      "endpoint": "https://teffen.fwd.wf/post-install",
+      "events": ["before-new-install", "before-update-install"],
       "block": true,
       "authenticate": ["account"]
     }
@@ -24,21 +36,84 @@
         "title": "Google Analytics Account",
         "type": "object",
         "format": "account",
-        "services": ["googleanalytics"],
+        "services": ["googleanalyticsdev"],
         "order": 0
       },
       "id": {
+        "showIf": {
+          "account": {
+            "op": "==",
+            "value": ""
+          }
+        },
         "title": "Universal analytics ID",
         "placeholder": "UA-12345678-1",
         "type": "string",
         "order": 1
       },
+
+      "organization": {
+        "showIf": {
+          "account": {
+            "op": "!=",
+            "value": ""
+          }
+        },
+        "order": 2,
+        "type": "string",
+        "title": "Organizations",
+        "description": "Organizations can manage multiple domains.",
+        "enum": [],
+        "add": {
+          "buttonLabel": "Add organization",
+          "description": "Add a new analytics organization to your Google Account",
+          "properties": {
+            "name": {
+              "order": 0,
+              "title": "Organization Name",
+              "description": "This name will appear in your Google Analytics dashboard.",
+              "required": true,
+              "type": "string"
+            }
+          }
+        }
+      },
+
+      "webPropertyTemplate": {
+        "order": 3,
+        "type": "hidden",
+        "title": "$ORGANIZATION Websites",
+        "enum": [],
+        "add": {
+          "buttonLabel": "Add website",
+          "description": "Add a website to your Google Analytics organization",
+          "properties": {
+            "name": {
+              "order": 0,
+              "title": "Website Name",
+              "placeholder": "Acme Inc.",
+              "description": "This name will appear in your Google Analytics dashboard.",
+              "required": true,
+              "type": "string"
+            },
+            "url": {
+              "order": 1,
+              "title": "Domain Name",
+              "description": "e.g. <strong>https://example.com</strong> or <strong>https://www.example.com</strong>",
+              "required": true,
+              "type": "string",
+              "format": "url"
+            }
+          }
+        }
+      },
+
       "social": {
         "title": "Track social",
         "description": "Send events when users use any Facebook or Twitter widgets on your site",
         "type": "boolean",
         "default": false,
-        "order": 2
+        "order": 1000
       }
     }
   }
