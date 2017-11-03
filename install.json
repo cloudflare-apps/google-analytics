@@ -9,19 +9,19 @@
   },
   "hooks": [
     {
-      "endpoint": "https://teffen.fwd.wf",
+      "endpoint": "https://google-analytics-oauth.appstore.cfdata.org",
       "events": ["oauth-login", "account-logout"],
       "block": true,
       "authenticate": ["account"]
     },
     {
-      "endpoint": "https://teffen.fwd.wf/provision",
+      "endpoint": "https://google-analytics-oauth.appstore.cfdata.org/provision",
       "events": ["item-add"],
       "block": true,
       "authenticate": ["account"]
     },
     {
-      "endpoint": "https://teffen.fwd.wf/post-install",
+      "endpoint": "https://google-analytics-oauth.appstore.cfdata.org/post-install",
       "events": ["before-new-install", "before-update-install"],
       "block": true,
       "authenticate": ["account"]
