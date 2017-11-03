@@ -48,7 +48,7 @@
         "title": "Google Analytics Account",
         "type": "object",
         "format": "account",
-        "services": ["googleanalyticsdev"],
+        "services": ["googleanalytics"],
         "order": 1
       },
       "id": {
