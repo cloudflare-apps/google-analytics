@@ -10,7 +10,7 @@
   "hooks": [
     {
       "endpoint": "https://teffen.fwd.wf",
-      "events": ["option-change:account"],
+      "events": ["oauth-login", "account-logout"],
       "block": true,
       "authenticate": ["account"]
     },
@@ -32,12 +32,24 @@
   },
   "options": {
     "properties": {
+      "noAccountHelp": {
+        "showIf": {
+          "account": {
+            "op": "==",
+            "value": ""
+          }
+        },
+        "order": 0,
+        "type": "hidden",
+        "helpvalue": "<div class=\"message info\"><p>It looks like you haven't yet setup a Google Analytics. Don't worry as this only takes few seconds. Once you're finished, log in again and your sites will appear below.</p><a href=\"https://analytics.google.com\" class=\"button primary more\" target=\"_blank\">Setup account</a></div>"
+      },
+
       "account": {
         "title": "Google Analytics Account",
         "type": "object",
         "format": "account",
         "services": ["googleanalyticsdev"],
-        "order": 0
+        "order": 1
       },
       "id": {
         "showIf": {
@@ -59,12 +71,11 @@
             "value": ""
           }
         },
-        "order": 2,
+        "order": 3,
         "type": "string",
         "title": "Organizations",
-        "description": "Organizations can manage multiple domains.",
         "enum": [],
-        "add": {
+        "add_disabled": {
           "buttonLabel": "Add organization",
           "description": "Add a new analytics organization to your Google Account",
           "properties": {
@@ -80,7 +91,7 @@
       },
 
       "webPropertyTemplate": {
-        "order": 3,
+        "order": 4,
         "type": "hidden",
         "title": "$ORGANIZATION Websites",
         "enum": [],
