@@ -41,7 +41,7 @@
         },
         "order": 0,
         "type": "hidden",
-        "helpvalue": "<div class=\"message info\"><p>It looks like you haven't yet setup a Google Analytics. Don't worry as this only takes few seconds. Once you're finished, log in again and your sites will appear below.</p><a href=\"https://analytics.google.com\" class=\"button primary more\" target=\"_blank\">Setup account</a></div>"
+        "helpvalue": "<div class=\"message info\"><p>It looks like this is your first time using Google Analytics. Welcome to the party! Push the button below to create an account.</p><p>Once you’re finished, log in again and your sites will automagically appear in the app installer.</p><a href=\"https://analytics.google.com\" class=\"button primary more\" target=\"_blank\">Setup account</a></div>"
       },
 
       "account": {
