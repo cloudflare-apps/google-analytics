@@ -36,7 +36,7 @@
         "showIf": {
           "account": {
             "op": "==",
-            "value": ""
+            "value": null
           }
         },
         "order": 0,
