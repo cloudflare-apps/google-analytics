@@ -3,7 +3,7 @@
   var id
 
 
-  if (options.account) {
+  if (options.account && options.organization) {
     id = options['web-properties-for-' + options.organization]
   } else {
     id = (options.id || '').trim()
@@ -12,6 +12,8 @@
   if (!id) {
     console.log('Cloudflare Google Analytics: Disabled. UA-ID not present.')
     return
+  } else if (INSTALL_ID === 'preview') {
+    console.log('Cloudflare Google Analytics: Enabled', id)
   }
 
   function resolveParameter (uri, parameter) {
