@@ -15,13 +15,15 @@
       "authenticate": ["account"]
     },
     {
-      "endpoint": "https://google-analytics-oauth.appstore.cfdata.org/provision",
+      "endpoint":
+        "https://google-analytics-oauth.appstore.cfdata.org/provision",
       "events": ["item-add"],
       "block": true,
       "authenticate": ["account"]
     },
     {
-      "endpoint": "https://google-analytics-oauth.appstore.cfdata.org/post-install",
+      "endpoint":
+        "https://google-analytics-oauth.appstore.cfdata.org/post-install",
       "events": ["before-new-install", "before-update-install"],
       "block": true,
       "authenticate": ["account"]
@@ -41,7 +43,8 @@
         },
         "order": 0,
         "type": "hidden",
-        "helpvalue": "<div class=\"message info\"><p>It looks like this is your first time using Google Analytics. Welcome to the party! Push the button below to create an account.</p><p>Once you’re finished, log in again and your sites will automagically appear in the app installer.</p><a href=\"https://analytics.google.com\" class=\"button primary more\" target=\"_blank\">Setup account</a></div>"
+        "helpvalue":
+          "<div class=\"message info\"><p>It looks like this is your first time using Google Analytics. Welcome to the party! Push the button below to create an account.</p><p>Once you’re finished, log in again and your sites will automagically appear in the app installer.</p><a href=\"https://analytics.google.com\" class=\"button primary more\" target=\"_blank\">Setup account</a></div>"
       },
 
       "account": {
@@ -77,12 +80,14 @@
         "enum": [],
         "add_disabled": {
           "buttonLabel": "Add organization",
-          "description": "Add a new analytics organization to your Google Account",
+          "description":
+            "Add a new analytics organization to your Google Account",
           "properties": {
             "name": {
               "order": 0,
               "title": "Organization Name",
-              "description": "This name will appear in your Google Analytics dashboard.",
+              "description":
+                "This name will appear in your Google Analytics dashboard.",
               "required": true,
               "type": "string"
             }
@@ -103,14 +108,16 @@
               "order": 0,
               "title": "Website Name",
               "placeholder": "Acme Inc.",
-              "description": "This name will appear in your Google Analytics dashboard.",
+              "description":
+                "This name will appear in your Google Analytics dashboard.",
               "required": true,
               "type": "string"
             },
             "url": {
               "order": 1,
               "title": "Domain Name",
-              "description": "e.g. <strong>https://example.com</strong> or <strong>https://www.example.com</strong>",
+              "description":
+                "e.g. <strong>https://example.com</strong> or <strong>https://www.example.com</strong>",
               "required": true,
               "type": "string",
               "format": "url"
@@ -119,9 +126,18 @@
         }
       },
 
+      "anonymizeIp": {
+        "title": "Anonymize IP addresses",
+        "description":
+          "Anonymize IP addresses in tracking data (required for GDPR compliance)",
+        "type": "boolean",
+        "default": false,
+        "order": 1000
+      },
       "social": {
         "title": "Track social",
-        "description": "Send events when users use any Facebook or Twitter widgets on your site",
+        "description":
+          "Send events when users use any Facebook or Twitter widgets on your site",
         "type": "boolean",
         "default": false,
         "order": 1000
